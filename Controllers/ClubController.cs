@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ModelTrainWebApp.Data;
 using ModelTrainWebApp.Models;
 
@@ -16,6 +17,12 @@ namespace ModelTrainWebApp.Controllers
         {
             List<Club> clubs = _context.Clubs.ToList();    //Model
             return View(clubs);     //View
+        }
+
+        public IActionResult Detail(int id)
+        {
+            Club club = _context.Clubs.Include(a => a.Address).FirstOrDefault(c => c.Id == id);
+            return View(club);
         }
     }
 }
