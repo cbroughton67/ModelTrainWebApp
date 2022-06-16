@@ -1,10 +1,14 @@
 using Microsoft.EntityFrameworkCore;
 using ModelTrainWebApp.Data;
+using ModelTrainWebApp.Interfaces;
+using ModelTrainWebApp.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IClubRepository, ClubRepository>();
+builder.Services.AddScoped<IMeetRepository, MeetRepository>();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));

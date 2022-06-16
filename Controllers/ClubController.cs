@@ -1,27 +1,28 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ModelTrainWebApp.Data;
+using ModelTrainWebApp.Interfaces;
 using ModelTrainWebApp.Models;
 
 namespace ModelTrainWebApp.Controllers
 {
     public class ClubController : Controller
     {
-        private readonly ApplicationDbContext _context;
-        public ClubController(ApplicationDbContext context)
+        private readonly IClubRepository _clubRepository;
+        public ClubController(IClubRepository clubRepository)
         {
-            _context = context;
+            _clubRepository = clubRepository;
         }
 
-        public IActionResult Index()    //Controller
+        public async Task<IActionResult> Index()    //Controller
         {
-            List<Club> clubs = _context.Clubs.ToList();    //Model
+            IEnumerable<Club> clubs = await _clubRepository.GetAll();    //Model
             return View(clubs);     //View
         }
 
-        public IActionResult Detail(int id)
+        public async Task<IActionResult> Detail(int id)
         {
-            Club club = _context.Clubs.Include(a => a.Address).FirstOrDefault(c => c.Id == id);
+            Club club = await _clubRepository.GetByIdAsync(id);
             return View(club);
         }
     }
