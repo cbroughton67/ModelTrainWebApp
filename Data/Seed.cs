@@ -72,7 +72,7 @@ namespace ModelTrainWebApp.Data
                     });
                     context.SaveChanges();
                 }
-                //Races
+                //Meets
                 if (!context.Meets.Any())
                 {
                     context.Meets.AddRange(new List<Meet>()

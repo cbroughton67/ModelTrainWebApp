@@ -3,6 +3,13 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+// https://docs.microsoft.com/en-us/ef/core/managing-schemas/migrations/?tabs=vs
+// In Package Manager Console:
+//      Add-Migration InitialCreate
+//      
+
+
+
 namespace ModelTrainWebApp.Migrations
 {
     public partial class initialCreate : Migration

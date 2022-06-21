@@ -24,6 +24,23 @@ namespace ModelTrainWebApp.Controllers
             Meet meet = await _meetRepository.GetByIdAsync(id);
             return View(meet);
         }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(Meet meet)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(meet);
+            }
+            _meetRepository.Add(meet);
+            return RedirectToAction("Index");
+
+        }
     }
 }
 
