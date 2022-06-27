@@ -3,16 +3,9 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-// https://docs.microsoft.com/en-us/ef/core/managing-schemas/migrations/?tabs=vs
-// In Package Manager Console:
-//      Add-Migration InitialCreate
-//      
-
-
-
 namespace ModelTrainWebApp.Migrations
 {
-    public partial class initialCreate : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -62,8 +55,9 @@ namespace ModelTrainWebApp.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AddressID = table.Column<int>(type: "int", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ClubCategory = table.Column<int>(type: "int", nullable: false),
                     AppUserId = table.Column<int>(type: "int", nullable: true)
                 },
@@ -95,6 +89,7 @@ namespace ModelTrainWebApp.Migrations
                     StartTime = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Website = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Contact = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AddressId = table.Column<int>(type: "int", nullable: false),
                     MeetCategory = table.Column<int>(type: "int", nullable: false),
                     AppUserId = table.Column<int>(type: "int", nullable: true)

@@ -6,6 +6,7 @@
         Operations,
         Railfanning,
         Business_Meeting,
-        Run_Trains
+        Run_Trains,
+        Swap_Meet
     }
 }

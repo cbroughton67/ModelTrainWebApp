@@ -1,7 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using ModelTrainWebApp.Data;
+using ModelTrainWebApp.Helpers;
 using ModelTrainWebApp.Interfaces;
 using ModelTrainWebApp.Repository;
+using ModelTrainWebApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +11,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IClubRepository, ClubRepository>();
 builder.Services.AddScoped<IMeetRepository, MeetRepository>();
+builder.Services.AddScoped<IPhotoService, PhotoService>();
+builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection("CloudinarySettings"));
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));

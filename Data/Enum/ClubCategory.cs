@@ -6,6 +6,7 @@
         Permanent,
         Operations,
         Organization,
-        Show
+        Show,
+        Home_Layout
     }
 }

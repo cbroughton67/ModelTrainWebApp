@@ -12,8 +12,8 @@ using ModelTrainWebApp.Data;
 namespace ModelTrainWebApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220612193737_initialCreate")]
-    partial class initialCreate
+    [Migration("20220626174308_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -103,8 +103,11 @@ namespace ModelTrainWebApp.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Image")
+                    b.Property<string>("Email")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
@@ -139,6 +142,9 @@ namespace ModelTrainWebApp.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Image")

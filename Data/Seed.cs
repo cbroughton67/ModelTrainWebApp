@@ -22,6 +22,7 @@ namespace ModelTrainWebApp.Data
                             Title = "Train Club 1",
                             Image = "https://www.eatthis.com/wp-content/uploads/sites/4/2020/05/running.jpg?quality=82&strip=1&resize=640%2C360",
                             Description = "This is the description of the 1st club",
+                            Email = "cbroughton67@gmail.com",
                             ClubCategory = ClubCategory.Permanent,
                             Address = new Address()
                             {
@@ -35,6 +36,7 @@ namespace ModelTrainWebApp.Data
                             Title = "Train Club 2",
                             Image = "https://www.eatthis.com/wp-content/uploads/sites/4/2020/05/running.jpg?quality=82&strip=1&resize=640%2C360",
                             Description = "This is the description of the 2nd club",
+                            Email = "cbroughton67@gmail.com",
                             ClubCategory = ClubCategory.Modular,
                             Address = new Address()
                             {
@@ -48,6 +50,7 @@ namespace ModelTrainWebApp.Data
                             Title = "Train Club 3",
                             Image = "https://www.eatthis.com/wp-content/uploads/sites/4/2020/05/running.jpg?quality=82&strip=1&resize=640%2C360",
                             Description = "This is the description of the 3rd club",
+                            Email = "cbroughton67@gmail.com",
                             ClubCategory = ClubCategory.Organization,
                             Address = new Address()
                             {
@@ -61,6 +64,7 @@ namespace ModelTrainWebApp.Data
                             Title = "Train Club 4",
                             Image = "https://www.eatthis.com/wp-content/uploads/sites/4/2020/05/running.jpg?quality=82&strip=1&resize=640%2C360",
                             Description = "This is the description of the 4th club",
+                            Email = "cbroughton67@gmail.com",
                             ClubCategory = ClubCategory.Show,
                             Address = new Address()
                             {
@@ -83,6 +87,7 @@ namespace ModelTrainWebApp.Data
                             Image = "https://www.eatthis.com/wp-content/uploads/sites/4/2020/05/running.jpg?quality=82&strip=1&resize=640%2C360",
                             Description = "This is the description of the first show",
                             MeetCategory = MeetCategory.Show,
+                            Email = "cbroughton67@gmail.com",
                             Address = new Address()
                             {
                                 Street = "123 Main St",
@@ -96,6 +101,7 @@ namespace ModelTrainWebApp.Data
                             Image = "https://www.eatthis.com/wp-content/uploads/sites/4/2020/05/running.jpg?quality=82&strip=1&resize=640%2C360",
                             Description = "This is the description of the first race",
                             MeetCategory = MeetCategory.Business_Meeting,
+                            Email = "cbroughton67@gmail.com",
                             AddressId = 5,
                             Address = new Address()
                             {

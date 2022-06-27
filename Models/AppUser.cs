@@ -3,6 +3,19 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ModelTrainWebApp.Models
 {
+    // In Package Manager Console, create the migration by running the command:
+    //          Add-Migration InitialCreate
+    //
+    // Create the database by running the command:
+    //          Update-Database 
+    //
+    // Seed data from Developer PowerShell, and run the command:
+    //          dotnet run seeddata
+    //
+    // Update migration by running the command:
+    //          Add-Migration [migration update name]
+    //
+
     public class AppUser
     {
         [Key]
