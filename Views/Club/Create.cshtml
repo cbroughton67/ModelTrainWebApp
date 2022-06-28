@@ -6,88 +6,58 @@
 *@
 @{
 }
-
 <!-- Create Club -->
 
-<script>
+<form method="post" asp-action="Create" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="Title">Title</label>
+        <input asp-for="Title" class="form-control" placeholder="Title" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description">Description</label>
+        <input asp-for="Description" class="form-control" placeholder="Description" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email">Email</label>
+        <input type="text" id="emailField" name="email" asp-for="Email" class="form-control" placeholder="Email" />
+        <span asp-validation-for="Email" class="text-danger"></span> 
+    </div>  
     
-  /* JS function to validate email input */
-  function validateEmail(inputEmail) 
-  {
-    var mailFormat = /^\w+([\.-]?\w+)*@@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    <div class="form-group">
+        <label asp-for="ClubCategory">ClubCategory</label>
+        <select asp-for="ClubCategory" asp-items="@Html.GetEnumSelectList<ClubCategory>()" class="form-control">
+            <option>--Select--</option>
+        </select>
+        <span asp-validation-for="ClubCategory" class="text-danger"></span>
+    </div>
 
-    if(inputEmail.match(mailFormat))
-    {
-      var response = document.getElementById("response");
-      return true;
-    }
-    else
-    {
-      var response = document.getElementById("response");
-      response.textContent = inputEmail + " is an invalid email format. Please try again.";
-      response.style.color = "red";
-      /* alert(inputEmail + " is an invalid email format. Please try again."); */
-      document.getElementById('emailField').focus();
-      return false;
-    }
-  }
-</script>
+    <div class="form-group">
+        <label asp-for="Address.Street">Street</label>
+        <input asp-for="Address.Street" class="form-control" placeholder="Street" />
+        <span asp-validation-for="Address.Street" class="text-danger"></span>
+    </div>    
 
-<body  document.getElementById('emailField').focus()">
+    <div class="form-group">
+        <label asp-for="Address.City">City</label>
+        <input asp-for="Address.City" class="form-control" placeholder="City" />
+        <span asp-validation-for="Address.City" class="text-danger"></span>
+    </div>    
 
-    <form method="post" asp-action="Create" enctype="multipart/form-data">
-          <div class="form-group">
-            <label asp-for="Title">Title</label>
-            <input asp-for="Title" class="form-control" placeholder="Title" />
-            <span asp-validation-for="Title" class="text-danger"></span>
-          </div>
+    <div class="form-group">
+        <label asp-for="Address.State">State</label>
+        <input asp-for="Address.State" class="form-control" placeholder="State" />
+        <span asp-validation-for="Address.State" class="text-danger"></span>
+    </div>   
 
-          <div class="form-group">
-            <label asp-for="Description">Description</label>
-            <input asp-for="Description" class="form-control" placeholder="Description" />
-            <span asp-validation-for="Description" class="text-danger"></span>
-          </div>
+    <div class="form-group">
+        <label asp-for="Image">Image</label>
+        <input asp-for="Image" type="file" class="form-control" placeholder="Image" />
+        <span asp-validation-for="Image" class="text-danger"></span>
+    </div>
 
-          <div class="form-group">
-            <label asp-for="Email">Email</label>
-            <input type="text" id="emailField" name="email" asp-for="Email" class="form-control" placeholder="Email" />
-            <!-- <span asp-validation-for="Email" class="text-danger"></span> -->
-            <div id="response"></div>
-          </div>  
-  
-  
-          <div class="form-group">
-            <label asp-for="ClubCategory">ClubCategory</label>
-            <select asp-for="ClubCategory" asp-items="@Html.GetEnumSelectList<ClubCategory>()" class="form-control">
-                     <option>--Select--</option>
-            </select>
-            <span asp-validation-for="ClubCategory" class="text-danger"></span>
-          </div>
-
-          <div class="form-group">
-            <label asp-for="Address.Street">Street</label>
-            <input asp-for="Address.Street" class="form-control" placeholder="Street" />
-            <span asp-validation-for="Address.Street" class="text-danger"></span>
-          </div>    
-
-          <div class="form-group">
-            <label asp-for="Address.City">City</label>
-            <input asp-for="Address.City" class="form-control" placeholder="City" />
-            <span asp-validation-for="Address.City" class="text-danger"></span>
-          </div>    
-
-          <div class="form-group">
-            <label asp-for="Address.State">State</label>
-            <input asp-for="Address.State" class="form-control" placeholder="State" />
-            <span asp-validation-for="Address.State" class="text-danger"></span>
-          </div>   
-
-          <div class="form-group">
-            <label asp-for="Image">Image</label>
-            <input asp-for="Image" type="file" class="form-control" placeholder="Image" />
-            <span asp-validation-for="Image" class="text-danger"></span>
-          </div>
-
-          <button type="submit" class="btn btn-primary" onclick="validateEmail(document.getElementById('emailField').value)">Submit</button>
-    </form>
-</body>
+    <button type="submit" class="btn btn-primary" onclick="validateEmail(document.getElementById('emailField').value)">Submit</button>
+</form>

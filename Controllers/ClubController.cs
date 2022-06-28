@@ -2,6 +2,7 @@
 using ModelTrainWebApp.Interfaces;
 using ModelTrainWebApp.Models;
 using ModelTrainWebApp.ViewModels;
+using System.Text.RegularExpressions;
 
 namespace ModelTrainWebApp.Controllers
 {
@@ -40,8 +41,20 @@ namespace ModelTrainWebApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CreateClubViewModel clubVM)
         {
-            if (ModelState.IsValid)
+            bool emailIsValid = true;
+
+            Regex regex = new Regex(@"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
+            if (!regex.IsMatch(clubVM.Email))
             {
+                emailIsValid = false;
+                clubVM.Email = String.Empty;
+            }
+
+            if (ModelState.IsValid && emailIsValid)
+            {
+
+                // Test clubVM.Email format here
+
                 var result = await _photoService.AddPhotoAsync(clubVM.Image);
 
                 var club = new Club
@@ -57,8 +70,13 @@ namespace ModelTrainWebApp.Controllers
                         State = clubVM.Address.State
                     }
                 };
+
                 _clubRepository.Add(club);
                 return RedirectToAction("Index");
+            }
+            else if (!emailIsValid)
+            {
+                ModelState.AddModelError("", "Email format is invalid");
             }
             else
             {

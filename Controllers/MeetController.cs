@@ -2,6 +2,7 @@
 using ModelTrainWebApp.Interfaces;
 using ModelTrainWebApp.Models;
 using ModelTrainWebApp.ViewModels;
+using System.Text.RegularExpressions;
 
 namespace ModelTrainWebApp.Controllers
 {
@@ -40,7 +41,16 @@ namespace ModelTrainWebApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CreateMeetViewModel meetVM)
         {
-            if (ModelState.IsValid)
+            bool emailIsValid = true;
+
+            Regex regex = new Regex(@"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
+            if (!regex.IsMatch(meetVM.Email))
+            {
+                emailIsValid = false;
+                meetVM.Email = String.Empty;
+            }
+
+            if (ModelState.IsValid && emailIsValid)
             {
                 var result = await _photoService.AddPhotoAsync(meetVM.Image);
 
@@ -61,6 +71,10 @@ namespace ModelTrainWebApp.Controllers
                 _meetRepository.Add(meet);
                 return RedirectToAction("Index");
 
+            }
+            else if (!emailIsValid)
+            {
+                ModelState.AddModelError("", "Email format is invalid");
             }
             else
             {
