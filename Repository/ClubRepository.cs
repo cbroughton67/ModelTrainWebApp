@@ -35,6 +35,11 @@ namespace ModelTrainWebApp.Repository
             return await _context.Clubs.Include(i => i.Address).FirstOrDefaultAsync(i => i.Id == id);
         }
 
+        public async Task<Club> GetByIdAsyncNoTracking(int id)        //Returns one row
+        {
+            return await _context.Clubs.Include(i => i.Address).AsNoTracking().FirstOrDefaultAsync(i => i.Id == id);
+        }
+
         public async Task<IEnumerable<Club>> GetAllClubsByCity(string city)
         {
             return await _context.Clubs.Where(c => c.Address.City.Contains(city)).ToListAsync();
@@ -48,7 +53,7 @@ namespace ModelTrainWebApp.Repository
 
         public bool Update(Club club)
         {
-            _context.Remove(club);
+            _context.Update(club);
             return Save();
         }
     }

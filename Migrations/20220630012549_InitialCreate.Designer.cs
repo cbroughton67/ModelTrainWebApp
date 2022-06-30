@@ -12,7 +12,7 @@ using ModelTrainWebApp.Data;
 namespace ModelTrainWebApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220626174308_InitialCreate")]
+    [Migration("20220630012549_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -123,7 +123,7 @@ namespace ModelTrainWebApp.Migrations
                     b.ToTable("Clubs");
                 });
 
-            modelBuilder.Entity("ModelTrainWebApp.Models.Meet", b =>
+            modelBuilder.Entity("ModelTrainWebApp.Models.Meetup", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -150,7 +150,7 @@ namespace ModelTrainWebApp.Migrations
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("MeetCategory")
+                    b.Property<int>("MeetupCategory")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("StartTime")
@@ -158,6 +158,9 @@ namespace ModelTrainWebApp.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("URL")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Website")
@@ -169,7 +172,7 @@ namespace ModelTrainWebApp.Migrations
 
                     b.HasIndex("AppUserId");
 
-                    b.ToTable("Meets");
+                    b.ToTable("Meetups");
                 });
 
             modelBuilder.Entity("ModelTrainWebApp.Models.AppUser", b =>
@@ -198,7 +201,7 @@ namespace ModelTrainWebApp.Migrations
                     b.Navigation("AppUser");
                 });
 
-            modelBuilder.Entity("ModelTrainWebApp.Models.Meet", b =>
+            modelBuilder.Entity("ModelTrainWebApp.Models.Meetup", b =>
                 {
                     b.HasOne("ModelTrainWebApp.Models.Address", "Address")
                         .WithMany()
@@ -207,7 +210,7 @@ namespace ModelTrainWebApp.Migrations
                         .IsRequired();
 
                     b.HasOne("ModelTrainWebApp.Models.AppUser", "AppUser")
-                        .WithMany("Meets")
+                        .WithMany("Meetups")
                         .HasForeignKey("AppUserId");
 
                     b.Navigation("Address");
@@ -219,7 +222,7 @@ namespace ModelTrainWebApp.Migrations
                 {
                     b.Navigation("Clubs");
 
-                    b.Navigation("Meets");
+                    b.Navigation("Meetups");
                 });
 #pragma warning restore 612, 618
         }

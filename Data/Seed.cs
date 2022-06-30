@@ -77,16 +77,16 @@ namespace ModelTrainWebApp.Data
                     context.SaveChanges();
                 }
                 //Meets
-                if (!context.Meets.Any())
+                if (!context.Meetups.Any())
                 {
-                    context.Meets.AddRange(new List<Meet>()
+                    context.Meetups.AddRange(new List<Meetup>()
                     {
-                        new Meet()
+                        new Meetup()
                         {
                             Title = "Train Show 1",
                             Image = "https://www.eatthis.com/wp-content/uploads/sites/4/2020/05/running.jpg?quality=82&strip=1&resize=640%2C360",
                             Description = "This is the description of the first show",
-                            MeetCategory = MeetCategory.Show,
+                            MeetupCategory = MeetupCategory.Show,
                             Email = "cbroughton67@gmail.com",
                             Address = new Address()
                             {
@@ -95,12 +95,12 @@ namespace ModelTrainWebApp.Data
                                 State = "KY"
                             }
                         },
-                        new Meet()
+                        new Meetup()
                         {
                             Title = "Business Meeting",
                             Image = "https://www.eatthis.com/wp-content/uploads/sites/4/2020/05/running.jpg?quality=82&strip=1&resize=640%2C360",
                             Description = "This is the description of the first race",
-                            MeetCategory = MeetCategory.Business_Meeting,
+                            MeetupCategory = MeetupCategory.Business_Meeting,
                             Email = "cbroughton67@gmail.com",
                             AddressId = 5,
                             Address = new Address()

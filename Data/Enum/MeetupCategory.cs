@@ -1,6 +1,6 @@
 ﻿namespace ModelTrainWebApp.Data.Enum
 {
-    public enum MeetCategory
+    public enum MeetupCategory
     {
         Show,
         Operations,

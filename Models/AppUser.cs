@@ -29,6 +29,6 @@ namespace ModelTrainWebApp.Models
         public int? AddressId { get; set; }
         public Address? Address { get; set; }
         public ICollection<Club> Clubs { get; set; }
-        public ICollection<Meet> Meets { get; set; }
+        public ICollection<Meetup> Meetups { get; set; }
     }
 }

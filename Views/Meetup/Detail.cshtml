@@ -1,4 +1,4 @@
-﻿@model Meet
+﻿@model Meetup
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
@@ -16,7 +16,7 @@ Page Content -->
     <div class="row">
   
       <div class="col-md-8">
-        <img class="img-fluid" src="https://via.placeholder.com/750x500" alt="">
+        <img class="img-fluid" src=@Model.Image alt="">
       </div>
   
       <div class="col-md-4">
@@ -26,7 +26,7 @@ Page Content -->
         <ul>
           <li>@Model.Address.City</li>
           <li>@Model.Address.State</li>
-          <li>@Model.MeetCategory</li>
+          <li>@Model.MeetupCategory</li>
         </ul>
       </div>
   

@@ -1,15 +1,14 @@
-﻿@using ModelTrainWebApp.Data.Enum;
-@using ModelTrainWebApp.ViewModels;
-@model CreateMeetViewModel 
+﻿@using ModelTrainWebApp.ViewModels;
+@using ModelTrainWebApp.Data.Enum;
+@model EditMeetupViewModel
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
 }
+<!-- Edit Meetup -->
 
-<!-- Create Meet -->
-
-<form method="post" asp-action="Create" enctype="multipart/form-data">
+<form method="post" asp-action="Edit" enctype="multipart/form-data">
     <div class="form-group">
         <label asp-for="Title">Title</label>
         <input asp-for="Title" class="form-control" placeholder="Title" />
@@ -29,11 +28,11 @@
     </div>  
   
     <div class="form-group">
-        <label asp-for="MeetCategory">MeetCategory</label>
-        <select asp-for="MeetCategory" asp-items="@Html.GetEnumSelectList<MeetCategory>()" class="form-control">
+        <label asp-for="MeetupCategory">MeetupCategory</label>
+        <select asp-for="MeetupCategory" asp-items="@Html.GetEnumSelectList<MeetupCategory>()" class="form-control">
             <option>--Select--</option>
         </select>
-        <span asp-validation-for="MeetCategory" class="text-danger"></span>
+        <span asp-validation-for="MeetupCategory" class="text-danger"></span>
     </div>
 
     <div class="form-group">

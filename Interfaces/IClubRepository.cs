@@ -6,6 +6,7 @@ namespace ModelTrainWebApp.Interfaces
     {
         Task<IEnumerable<Club>> GetAll();
         Task<Club> GetByIdAsync(int id);
+        Task<Club> GetByIdAsyncNoTracking(int id);
         Task<IEnumerable<Club>> GetAllClubsByCity(string city);
         
         // CRUD commands

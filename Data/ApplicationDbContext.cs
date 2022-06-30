@@ -10,7 +10,7 @@ namespace ModelTrainWebApp.Data
 
         }
 
-        public DbSet<Meet> Meets { get; set; }
+        public DbSet<Meetup> Meetups { get; set; }
         public DbSet<Club> Clubs { get; set; }
         public DbSet<Address> Addresses { get; set; }
     }

@@ -78,7 +78,7 @@ namespace ModelTrainWebApp.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Meets",
+                name: "Meetups",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -86,25 +86,26 @@ namespace ModelTrainWebApp.Migrations
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    URL = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     StartTime = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Website = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Contact = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AddressId = table.Column<int>(type: "int", nullable: false),
-                    MeetCategory = table.Column<int>(type: "int", nullable: false),
+                    MeetupCategory = table.Column<int>(type: "int", nullable: false),
                     AppUserId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Meets", x => x.Id);
+                    table.PrimaryKey("PK_Meetups", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Meets_Addresses_AddressId",
+                        name: "FK_Meetups_Addresses_AddressId",
                         column: x => x.AddressId,
                         principalTable: "Addresses",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Meets_AppUser_AppUserId",
+                        name: "FK_Meetups_AppUser_AppUserId",
                         column: x => x.AppUserId,
                         principalTable: "AppUser",
                         principalColumn: "Id");
@@ -126,13 +127,13 @@ namespace ModelTrainWebApp.Migrations
                 column: "AppUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Meets_AddressId",
-                table: "Meets",
+                name: "IX_Meetups_AddressId",
+                table: "Meetups",
                 column: "AddressId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Meets_AppUserId",
-                table: "Meets",
+                name: "IX_Meetups_AppUserId",
+                table: "Meetups",
                 column: "AppUserId");
         }
 
@@ -142,7 +143,7 @@ namespace ModelTrainWebApp.Migrations
                 name: "Clubs");
 
             migrationBuilder.DropTable(
-                name: "Meets");
+                name: "Meetups");
 
             migrationBuilder.DropTable(
                 name: "AppUser");

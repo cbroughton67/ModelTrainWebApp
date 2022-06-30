@@ -3,17 +3,16 @@ using ModelTrainWebApp.Models;
 
 namespace ModelTrainWebApp.ViewModels
 {
-    public class CreateMeetViewModel
+    public class EditClubViewModel
     {
         public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public string Email { get; set; }
-        public DateTime? StartTime { get; set; }
-        public Address Address { get; set; }
         public IFormFile Image { get; set; }
-        public MeetCategory MeetCategory { get; set; }
-
+        public string? URL { get; set; }
+        public int AddressID { get; set; }
+        public Address Address { get; set; }
+        public ClubCategory ClubCategory { get; set; }
+        public String Email { get; set; }
     }
-
 }
