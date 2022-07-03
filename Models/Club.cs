@@ -32,8 +32,5 @@ namespace ModelTrainWebApp.Models
         public string? Email { get; set; }
         public string? Website { get; set; }
         public ClubCategory ClubCategory { get; set; }
-        [ForeignKey("AppUser")]
-        public int? AppUserId { get; set; }
-        public AppUser? AppUser { get; set; }
     }
 }

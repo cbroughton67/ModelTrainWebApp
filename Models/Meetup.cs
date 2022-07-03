@@ -24,17 +24,11 @@ namespace ModelTrainWebApp.Models
         public string Title { get; set; }
         public string Description { get; set; }
         public string? Image { get; set; }
-        public string? URL { get; set; }
         public DateTime? StartTime { get; set; }
-        //public string? Website { get; set; }
-        //public string? Contact { get; set; }
         public string? Email { get; set; }
         [ForeignKey("Address")]
         public int AddressId { get; set; }
         public Address? Address { get; set; }
         public MeetupCategory MeetupCategory { get; set; }
-        [ForeignKey("AppUser")]
-        public int? AppUserId { get; set; }
-        public AppUser? AppUser { get; set; }
     }
 }

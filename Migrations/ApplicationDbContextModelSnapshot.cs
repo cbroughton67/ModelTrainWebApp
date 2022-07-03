@@ -47,39 +47,6 @@ namespace ModelTrainWebApp.Migrations
                     b.ToTable("Addresses");
                 });
 
-            modelBuilder.Entity("ModelTrainWebApp.Models.AppUser", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int?>("AddressId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("City")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Layout")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ProfileImageUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Scale")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("State")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AddressId");
-
-                    b.ToTable("AppUser");
-                });
-
             modelBuilder.Entity("ModelTrainWebApp.Models.Club", b =>
                 {
                     b.Property<int>("Id")
@@ -89,9 +56,6 @@ namespace ModelTrainWebApp.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int>("AddressID")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("AppUserId")
                         .HasColumnType("int");
 
                     b.Property<int>("ClubCategory")
@@ -118,8 +82,6 @@ namespace ModelTrainWebApp.Migrations
 
                     b.HasIndex("AddressID");
 
-                    b.HasIndex("AppUserId");
-
                     b.ToTable("Clubs");
                 });
 
@@ -132,9 +94,6 @@ namespace ModelTrainWebApp.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int>("AddressId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("AppUserId")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -157,25 +116,11 @@ namespace ModelTrainWebApp.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("URL")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("AddressId");
 
-                    b.HasIndex("AppUserId");
-
                     b.ToTable("Meetups");
-                });
-
-            modelBuilder.Entity("ModelTrainWebApp.Models.AppUser", b =>
-                {
-                    b.HasOne("ModelTrainWebApp.Models.Address", "Address")
-                        .WithMany()
-                        .HasForeignKey("AddressId");
-
-                    b.Navigation("Address");
                 });
 
             modelBuilder.Entity("ModelTrainWebApp.Models.Club", b =>
@@ -186,13 +131,7 @@ namespace ModelTrainWebApp.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ModelTrainWebApp.Models.AppUser", "AppUser")
-                        .WithMany("Clubs")
-                        .HasForeignKey("AppUserId");
-
                     b.Navigation("Address");
-
-                    b.Navigation("AppUser");
                 });
 
             modelBuilder.Entity("ModelTrainWebApp.Models.Meetup", b =>
@@ -203,20 +142,7 @@ namespace ModelTrainWebApp.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ModelTrainWebApp.Models.AppUser", "AppUser")
-                        .WithMany("Meetups")
-                        .HasForeignKey("AppUserId");
-
                     b.Navigation("Address");
-
-                    b.Navigation("AppUser");
-                });
-
-            modelBuilder.Entity("ModelTrainWebApp.Models.AppUser", b =>
-                {
-                    b.Navigation("Clubs");
-
-                    b.Navigation("Meetups");
                 });
 #pragma warning restore 612, 618
         }

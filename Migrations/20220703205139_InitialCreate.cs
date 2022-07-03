@@ -25,29 +25,6 @@ namespace ModelTrainWebApp.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "AppUser",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Scale = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Layout = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ProfileImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    City = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    State = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    AddressId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AppUser", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_AppUser_Addresses_AddressId",
-                        column: x => x.AddressId,
-                        principalTable: "Addresses",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Clubs",
                 columns: table => new
                 {
@@ -59,8 +36,7 @@ namespace ModelTrainWebApp.Migrations
                     AddressID = table.Column<int>(type: "int", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Website = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ClubCategory = table.Column<int>(type: "int", nullable: false),
-                    AppUserId = table.Column<int>(type: "int", nullable: true)
+                    ClubCategory = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -71,11 +47,6 @@ namespace ModelTrainWebApp.Migrations
                         principalTable: "Addresses",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Clubs_AppUser_AppUserId",
-                        column: x => x.AppUserId,
-                        principalTable: "AppUser",
-                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -87,12 +58,10 @@ namespace ModelTrainWebApp.Migrations
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    URL = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     StartTime = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AddressId = table.Column<int>(type: "int", nullable: false),
-                    MeetupCategory = table.Column<int>(type: "int", nullable: false),
-                    AppUserId = table.Column<int>(type: "int", nullable: true)
+                    MeetupCategory = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -103,17 +72,7 @@ namespace ModelTrainWebApp.Migrations
                         principalTable: "Addresses",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Meetups_AppUser_AppUserId",
-                        column: x => x.AppUserId,
-                        principalTable: "AppUser",
-                        principalColumn: "Id");
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AppUser_AddressId",
-                table: "AppUser",
-                column: "AddressId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Clubs_AddressID",
@@ -121,19 +80,9 @@ namespace ModelTrainWebApp.Migrations
                 column: "AddressID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Clubs_AppUserId",
-                table: "Clubs",
-                column: "AppUserId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Meetups_AddressId",
                 table: "Meetups",
                 column: "AddressId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Meetups_AppUserId",
-                table: "Meetups",
-                column: "AppUserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -143,9 +92,6 @@ namespace ModelTrainWebApp.Migrations
 
             migrationBuilder.DropTable(
                 name: "Meetups");
-
-            migrationBuilder.DropTable(
-                name: "AppUser");
 
             migrationBuilder.DropTable(
                 name: "Addresses");
