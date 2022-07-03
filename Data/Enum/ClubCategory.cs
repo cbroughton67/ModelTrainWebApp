@@ -2,11 +2,11 @@
 {
     public enum ClubCategory
     {
+        Ntrak,
+        FreeMo,
+        FreeMoN,
         Modular,
-        Permanent,
-        Operations,
         Organization,
-        Show,
         Home_Layout
     }
 }

@@ -22,6 +22,12 @@
     </div>
 
     <div class="form-group">
+        <label asp-for="Website">Website</label>
+        <input asp-for="Website" class="form-control" placeholder="Website" />
+        <span asp-validation-for="Website" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
         <label asp-for="Email">Email</label>
         <input type="text" id="emailField" name="email" asp-for="Email" class="form-control" placeholder="Email" />
         <span asp-validation-for="Email" class="text-danger"></span> 

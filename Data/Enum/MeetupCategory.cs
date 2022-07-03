@@ -4,9 +4,9 @@
     {
         Show,
         Operations,
-        Railfanning,
-        Business_Meeting,
         Run_Trains,
-        Swap_Meet
+        Business_Meeting,
+        Swap_Meet,
+        Work_Session
     }
 }

@@ -20,10 +20,12 @@
                 <div class="card-body">
                   <p class="card-text">@item.Title</p>
                   <p class="card-text">@item.Description</p>
+                  <p class="card-text">@item.StartTime</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                       <a asp-controller="Meetup" asp-action="Detail" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-outline-secondary">View</a>
                       <a asp-controller="Meetup" asp-action="Edit" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-outline-secondary">Edit</a>
+                      <a asp-controller="Meetup" asp-action="Delete" asp-route-id="@item.Id" type="button" class="btn btn-sm btn-outline-secondary">Delete</a>
                     </div>
                     <small class="text-muted">@item.MeetupCategory</small>
                   </div>

@@ -59,7 +59,7 @@ namespace ModelTrainWebApp.Controllers
                     Title = meetupVM.Title,
                     Description = meetupVM.Description,
                     Email = meetupVM.Email,
-                    URL = result.Url.ToString(),
+                    Image = result.Url.ToString(),
                     Address = new Address
                     {
                         Street = meetupVM.Address.Street,
@@ -89,6 +89,7 @@ namespace ModelTrainWebApp.Controllers
         {
             var meetup = await _meetupRepository.GetByIdAsync(id);
             if (meetup == null) return View("Error");
+
             var meetupVM = new EditMeetupViewModel
             {
                 Title = meetup.Title,
@@ -96,9 +97,10 @@ namespace ModelTrainWebApp.Controllers
                 AddressID = meetup.AddressId,
                 Address = meetup.Address,
                 StartTime = meetup.StartTime,
-                Contact = meetup.Contact,
-                Website = meetup.Website,
-                URL = meetup.Image,
+                //Contact = meetup.Contact,
+                //Website = meetup.Website,
+                //URL = meetup.Image,
+                Email = meetup.Email,
                 MeetupCategory = meetup.MeetupCategory
             };
 
@@ -118,7 +120,6 @@ namespace ModelTrainWebApp.Controllers
 
             if (userMeetup != null)
             {
-
                 try
                 {
                     await _photoService.DeletePhotoAsync(userMeetup.Image);
@@ -136,13 +137,14 @@ namespace ModelTrainWebApp.Controllers
                     Id = id,
                     Title = meetupVM.Title,
                     Description = meetupVM.Description,
+                    StartTime = meetupVM.StartTime,
+                    Email = meetupVM.Email,
+                    MeetupCategory = meetupVM.MeetupCategory,
                     AddressId = meetupVM.AddressID,
                     Address = meetupVM.Address,
-                    StartTime = meetupVM.StartTime,
-                    Contact = meetupVM.Contact,
-                    Website = meetupVM.Website,
-                    Image = photoResult.Url.ToString(),
-                    MeetupCategory = meetupVM.MeetupCategory
+                    //Contact = meetupVM.Contact,
+                    //Website = meetupVM.Website,
+                    Image = photoResult.Url.ToString()
                 };
 
                 _meetupRepository.Update(meetup);
@@ -153,6 +155,34 @@ namespace ModelTrainWebApp.Controllers
                 return View(meetupVM);
             }
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var meetupDetails = await _meetupRepository.GetByIdAsync(id);
+            if (meetupDetails == null) return View("Error");
+            return View(meetupDetails);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteClub(int id)
+        {
+            var MeetupDetails = await _meetupRepository.GetByIdAsync(id);
+
+            if (MeetupDetails == null)
+            {
+                return View("Error");
+            }
+
+            if (!string.IsNullOrEmpty(MeetupDetails.Image))
+            {
+                _ = _photoService.DeletePhotoAsync(MeetupDetails.Image);
+            }
+
+            _meetupRepository.Delete(MeetupDetails);
+            return RedirectToAction("Index");
+        }
+
     }
 }
 

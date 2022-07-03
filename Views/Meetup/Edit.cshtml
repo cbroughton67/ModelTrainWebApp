@@ -28,6 +28,12 @@
     </div>  
   
     <div class="form-group">
+        <label asp-for="Email">Email</label>
+        <input type="text" id="emailField" name="email" asp-for="Email" class="form-control" placeholder="Email" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>  
+
+    <div class="form-group">
         <label asp-for="MeetupCategory">MeetupCategory</label>
         <select asp-for="MeetupCategory" asp-items="@Html.GetEnumSelectList<MeetupCategory>()" class="form-control">
             <option>--Select--</option>
@@ -53,12 +59,6 @@
         <span asp-validation-for="Address.State" class="text-danger"></span>
     </div>    
   
-    <div class="form-group">
-        <label asp-for="Email">Email</label>
-        <input type="text" id="emailField" name="email" asp-for="Email" class="form-control" placeholder="Email" />
-        <span asp-validation-for="Email" class="text-danger"></span>
-    </div>  
-
     <div class="form-group">
         <label asp-for="Image">Image</label>
         <input asp-for="Image" type="file" class="form-control" placeholder="Image" />
