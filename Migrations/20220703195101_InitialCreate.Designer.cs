@@ -12,7 +12,7 @@ using ModelTrainWebApp.Data;
 namespace ModelTrainWebApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220630012549_InitialCreate")]
+    [Migration("20220703195101_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -104,7 +104,6 @@ namespace ModelTrainWebApp.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Image")
@@ -112,6 +111,9 @@ namespace ModelTrainWebApp.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Website")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -137,9 +139,6 @@ namespace ModelTrainWebApp.Migrations
                     b.Property<int?>("AppUserId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Contact")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -161,9 +160,6 @@ namespace ModelTrainWebApp.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("URL")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Website")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

@@ -57,7 +57,8 @@ namespace ModelTrainWebApp.Migrations
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AddressID = table.Column<int>(type: "int", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Website = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ClubCategory = table.Column<int>(type: "int", nullable: false),
                     AppUserId = table.Column<int>(type: "int", nullable: true)
                 },
@@ -88,8 +89,6 @@ namespace ModelTrainWebApp.Migrations
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     URL = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     StartTime = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Website = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Contact = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AddressId = table.Column<int>(type: "int", nullable: false),
                     MeetupCategory = table.Column<int>(type: "int", nullable: false),

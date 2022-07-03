@@ -24,7 +24,13 @@ namespace ModelTrainWebApp.Data
                             Description = "The Kentuckiana Society of N Scalers (KSONS) are dedicated to the advancement and enjoyment of N scale model railroading in Louisville, Southern Indiana, and the surrounding area. We have several home layouts and will often meet to run trains. Our current emphasis is building and developing Free-moN modules.",
                             Email = "KSONSmrc@gmail.com",
                             Website = "https://sites.google.com/view/ksonsmrc/home",
-                            ClubCategory = ClubCategory.FreeMoN
+                            ClubCategory = ClubCategory.FreeMoN,
+                            Address = new Address()
+                            {
+                                Street = "600 N Hurstboune Pkwy",
+                                City = "Louisville",
+                                State = "KY"
+                            }
                          },
                         new Club()
                         {
