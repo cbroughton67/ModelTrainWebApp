@@ -5,7 +5,7 @@ using System.Diagnostics;
 namespace ModelTrainWebApp.Controllers
 {
     // Project requirement: Create an additional class which inherits one or more properties from its parent
-    public class HomeController : Controller    //HomeController inherits from Controller
+    public class HomeController : Controller    //HomeController inherits from the Microsoft.AspNetCore.Mvc.Controller  class
     {
         private readonly ILogger<HomeController> _logger;
 

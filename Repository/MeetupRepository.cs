@@ -5,7 +5,7 @@ using ModelTrainWebApp.Data;
 
 namespace ModelTrainWebApp.Repository
 {
-    public class MeetupRepository : IMeetupRepository       //Implements IMeetupRepository
+    public class MeetupRepository : IMeetupRepository       //Implements IMeetupRepository Interface
     {
         private readonly ApplicationDbContext _context;
         public MeetupRepository(ApplicationDbContext context)

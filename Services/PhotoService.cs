@@ -6,7 +6,7 @@ using ModelTrainWebApp.Interfaces;
 
 namespace ModelTrainWebApp.Services
 {
-    public class PhotoService : IPhotoService
+    public class PhotoService : IPhotoService  // Implements the IPhotoService interface
 
     {
         private readonly Cloudinary _cloudinary;

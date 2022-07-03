@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 namespace ModelTrainWebApp.Controllers
 {
     // Project requirement: Create an additional class which inherits one or more properties from its parent
-    public class MeetupController : Controller    //MeetController inherits from Controller
+    public class MeetupController : Controller    //MeetController inherits from the Microsoft.AspNetCore.Mvc.Controller  class
     {
         private readonly IMeetupRepository _meetupRepository;
         private readonly IPhotoService _photoService;
