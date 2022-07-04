@@ -28,7 +28,6 @@ namespace ModelTrainWebApp.Models
         [ForeignKey("Address")]
         public int AddressID { get; set; }
         public Address? Address { get; set; }
-        [RegularExpression(@"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$")]
         public string? Email { get; set; }
         public string? Website { get; set; }
         public ClubCategory ClubCategory { get; set; }

@@ -6,7 +6,9 @@ using System.Text.RegularExpressions;
 
 namespace ModelTrainWebApp.Controllers
 {
-    // Project requirement: Create an additional class which inherits one or more properties from its parent
+    //***************************************************************************************************
+    // Required Feature: Create an additional class which inherits one or more properties from its parent
+    //***************************************************************************************************
     public class MeetupController : Controller    //MeetController inherits from the Microsoft.AspNetCore.Mvc.Controller  class
     {
         private readonly IMeetupRepository _meetupRepository;
@@ -38,22 +40,31 @@ namespace ModelTrainWebApp.Controllers
             return View();
         }
 
+        //**********************************************************************************************************************************************
+        // Required Feature: Create and call at least 3 functions or methods, at least one of which must return a value that is used in your application
+        //**********************************************************************************************************************************************
         [HttpPost]
-        public async Task<IActionResult> Create(CreateMeetupViewModel meetupVM)
+        public async Task<IActionResult>Create(CreateMeetupViewModel meetupVM)
         {
-            bool emailIsValid = true;
-
+            //*********************************************************************************************************************************************
+            // Required Feature: Implement a regular expression (regex) to ensure a field (email address) is always stored and displayed in the same format
+            //*********************************************************************************************************************************************
             Regex regex = new Regex(@"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
             if (!regex.IsMatch(meetupVM.Email))
             {
-                emailIsValid = false;
-                meetupVM.Email = String.Empty;
+                ModelState.AddModelError("", "Email format is invalid");
+                ViewBag.InvalidEmailMessage = "Invalid Email Format. Please correct and try again.";
+                return View(meetupVM);
             }
 
-            if (ModelState.IsValid && emailIsValid)
+
+            if (ModelState.IsValid)
             {
                 var result = await _photoService.AddPhotoAsync(meetupVM.Image);
 
+                //***************************************************************************************************************************************************************
+                // Required Feature: Create at least one class, create at least one object of that class, and populate it with data. Use or display the data in your application
+                //***************************************************************************************************************************************************************
                 var meetup = new Meetup
                 {
                     Title = meetupVM.Title,
@@ -72,20 +83,21 @@ namespace ModelTrainWebApp.Controllers
                 return RedirectToAction("Index");
 
             }
-            else if (!emailIsValid)
-            {
-                ModelState.AddModelError("", "Email format is invalid");
-            }
             else
             {
                 ModelState.AddModelError("", "Photo upload failed");
+                ViewBag.PhotoFailed = "Photo failed to upload";
             }
 
             return View(meetupVM);
         }
 
 
-        public async Task<IActionResult> Edit(int id)
+        //**********************************************************************************************************************************************
+        // Required Feature: Create and call at least 3 functions or methods, at least one of which must return a value that is used in your application
+        //**********************************************************************************************************************************************
+        [HttpGet]
+        public async Task<IActionResult>Edit(int id)
         {
             var meetup = await _meetupRepository.GetByIdAsync(id);
             if (meetup == null) return View("Error");
@@ -107,9 +119,24 @@ namespace ModelTrainWebApp.Controllers
             return View(meetupVM);
         }
 
+        //**********************************************************************************************************************************************
+        // Required Feature: Create and call at least 3 functions or methods, at least one of which must return a value that is used in your application
+        //**********************************************************************************************************************************************
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, EditMeetupViewModel meetupVM)
+        public async Task<IActionResult>Edit(int id, EditMeetupViewModel meetupVM)
         {
+            //*********************************************************************************************************************************************
+            // Required Feature: Implement a regular expression (regex) to ensure a field (email address) is always stored and displayed in the same format
+            //*********************************************************************************************************************************************
+
+            Regex regex = new Regex(@"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
+            if (!regex.IsMatch(meetupVM.Email))
+            {
+                ModelState.AddModelError("", "Email format is invalid");
+                ViewBag.InvalidEmailMessage = "Invalid Email Format. Please correct and try again.";
+                return View(meetupVM);
+            }
+
             if (!ModelState.IsValid)
             {
                 ModelState.AddModelError("", "Failed to edit event");
@@ -132,6 +159,9 @@ namespace ModelTrainWebApp.Controllers
 
                 var photoResult = await _photoService.AddPhotoAsync(meetupVM.Image);
 
+                //***************************************************************************************************************************************************************
+                // Required Feature: Create at least one class, create at least one object of that class, and populate it with data. Use or display the data in your application
+                //***************************************************************************************************************************************************************
                 var meetup = new Meetup
                 {
                     Id = id,
@@ -156,8 +186,11 @@ namespace ModelTrainWebApp.Controllers
             }
         }
 
+        //**********************************************************************************************************************************************
+        // Required Feature: Create and call at least 3 functions or methods, at least one of which must return a value that is used in your application
+        //**********************************************************************************************************************************************
         [HttpGet]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult>Delete(int id)
         {
             var meetupDetails = await _meetupRepository.GetByIdAsync(id);
             if (meetupDetails == null) return View("Error");

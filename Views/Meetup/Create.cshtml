@@ -9,62 +9,74 @@
 
 <!-- Create Meetup -->
 
-<form method="post" asp-action="Create" enctype="multipart/form-data">
-    <div class="form-group">
-        <label asp-for="Title">Title</label>
-        <input asp-for="Title" class="form-control" placeholder="Title" />
-        <span asp-validation-for="Title" class="text-danger"></span>
-    </div>
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">Model Railroad Events & Gatherings</h1>
+            <p class="lead text-muted">Your Source for Model Railroad Clubs and Events!</p>
+        </div>
+    </section>
+    <section>
+        <h3>Adding a New Event</h3>
+        <form method="post" asp-action="Create" enctype="multipart/form-data">
+            <div class="form-group">
+                <label asp-for="Title">Title</label>
+                <input asp-for="Title" class="form-control" placeholder="Title" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
 
-    <div class="form-group">
-        <label asp-for="Description">Description</label>
-        <input asp-for="Description" class="form-control" placeholder="Description" />
-        <span asp-validation-for="Description" class="text-danger"></span>
-    </div>
+            <div class="form-group">
+                <label asp-for="Description">Description</label>
+                <input asp-for="Description" class="form-control" placeholder="Description" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
    
-    <div class="form-group">
-        <label asp-for="StartTime">Time</label>
-        <input asp-for="StartTime" class="form-control" placeholder="Time" />
-        <span asp-validation-for="StartTime" class="text-danger"></span>
-    </div>  
+            <div class="form-group">
+                <label asp-for="StartTime">Time</label>
+                <input asp-for="StartTime" class="form-control" placeholder="Time" />
+                <span asp-validation-for="StartTime" class="text-danger"></span>
+            </div>  
   
-    <div class="form-group">
-        <label asp-for="Email">Email</label>
-        <input type="text" id="emailField" name="email" asp-for="Email" class="form-control" placeholder="Email" />
-        <span asp-validation-for="Email" class="text-danger"></span>
-    </div>  
+            <div class="form-group">
+                <label asp-for="Email">Email</label>
+                <input type="text" id="emailField" name="email" asp-for="Email" class="form-control" placeholder="Email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+                <span style="color:red">@ViewBag.InvalidEmailMessage</span>
+            </div>  
 
-    <div class="form-group">
-        <label asp-for="MeetupCategory">MeetupCategory</label>
-        <select asp-for="MeetupCategory" asp-items="@Html.GetEnumSelectList<MeetupCategory>()" class="form-control">
-            <option>--Select--</option>
-        </select>
-        <span asp-validation-for="MeetupCategory" class="text-danger"></span>
-    </div>
+            <div class="form-group">
+                <label asp-for="MeetupCategory">MeetupCategory</label>
+                <select asp-for="MeetupCategory" asp-items="@Html.GetEnumSelectList<MeetupCategory>()" class="form-control">
+                    <option>--Select--</option>
+                </select>
+                <span asp-validation-for="MeetupCategory" class="text-danger"></span>
+            </div>
 
-    <div class="form-group">
-        <label asp-for="Address.Street">Street</label>
-        <input asp-for="Address.Street" class="form-control" placeholder="Street" />
-        <span asp-validation-for="Address.Street" class="text-danger"></span>
-    </div>    
+            <div class="form-group">
+                <label asp-for="Address.Street">Street</label>
+                <input asp-for="Address.Street" class="form-control" placeholder="Street" />
+                <span asp-validation-for="Address.Street" class="text-danger"></span>
+            </div>    
 
-    <div class="form-group">
-        <label asp-for="Address.City">City</label>
-        <input asp-for="Address.City" class="form-control" placeholder="City" />
-        <span asp-validation-for="Address.City" class="text-danger"></span>
-    </div>    
+            <div class="form-group">
+                <label asp-for="Address.City">City</label>
+                <input asp-for="Address.City" class="form-control" placeholder="City" />
+                <span asp-validation-for="Address.City" class="text-danger"></span>
+            </div>    
 
-    <div class="form-group">
-        <label asp-for="Address.State">State</label>
-        <input asp-for="Address.State" class="form-control" placeholder="State" />
-        <span asp-validation-for="Address.State" class="text-danger"></span>
-    </div>    
+            <div class="form-group">
+                <label asp-for="Address.State">State</label>
+                <input asp-for="Address.State" class="form-control" placeholder="State" />
+                <span asp-validation-for="Address.State" class="text-danger"></span>
+            </div>    
 
-    <div class="form-group">
-        <label asp-for="Image">Image</label>
-        <input asp-for="Image" type="file" class="form-control" placeholder="Image" />
-        <span asp-validation-for="Image" class="text-danger"></span>
-    </div>
+            <div class="form-group">
+                <label asp-for="Image">Image</label>
+                <input asp-for="Image" type="file" class="form-control" placeholder="Image" />
+                <span asp-validation-for="Image" class="text-danger"></span>
+                <span style="color:red">@ViewBag.PhotoFailed</span>
+            </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button> <button padding:15px type="button" class="btn btn-primary" onclick="window.history.go(-1)">Cancel</button>
-</form>
+            <button type="submit" class="btn btn-primary">Submit</button> <button padding:15px type="button" class="btn btn-primary" onclick="window.history.go(-1)">Cancel</button>
+        </form>
+    </section>
+

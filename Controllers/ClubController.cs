@@ -6,7 +6,9 @@ using System.Text.RegularExpressions;
 
 namespace ModelTrainWebApp.Controllers
 {
-    // Project requirement: Create an additional class which inherits one or more properties from its parent
+    //***************************************************************************************************
+    // Required Feature: Create an additional class which inherits one or more properties from its parent
+    //***************************************************************************************************
     public class ClubController : Controller    //ClubController class inherits from the Microsoft.AspNetCore.Mvc.Controller  class
     {
         private readonly IClubRepository _clubRepository;
@@ -38,25 +40,30 @@ namespace ModelTrainWebApp.Controllers
             return View();
         }
 
+        //**********************************************************************************************************************************************
+        // Required Feature: Create and call at least 3 functions or methods, at least one of which must return a value that is used in your application
+        //**********************************************************************************************************************************************
         [HttpPost]
-        public async Task<IActionResult> Create(CreateClubViewModel clubVM)
+        public async Task<IActionResult>Create(CreateClubViewModel clubVM)
         {
-            bool emailIsValid = true;
-
+            //*********************************************************************************************************************************************
+            // Required Feature: Implement a regular expression (regex) to ensure a field (email address) is always stored and displayed in the same format
+            //*********************************************************************************************************************************************
             Regex regex = new Regex(@"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
             if (!regex.IsMatch(clubVM.Email))
             {
-                emailIsValid = false;
-                clubVM.Email = String.Empty;
+                ModelState.AddModelError("", "Email format is invalid");
+                ViewBag.InvalidEmailMessage = "Invalid Email Format. Please correct and try again.";
+                return View(clubVM);
             }
 
-            if (ModelState.IsValid && emailIsValid)
+            if (ModelState.IsValid)
             {
-
-                // Test clubVM.Email format here
-
                 var result = await _photoService.AddPhotoAsync(clubVM.Image);
 
+                //***************************************************************************************************************************************************************
+                // Required Feature: Create at least one class, create at least one object of that class, and populate it with data. Use or display the data in your application
+                //***************************************************************************************************************************************************************
                 var club = new Club
                 {
                     Title = clubVM.Title,
@@ -74,24 +81,27 @@ namespace ModelTrainWebApp.Controllers
                 _clubRepository.Add(club);
                 return RedirectToAction("Index");
             }
-            else if (!emailIsValid)
-            {
-                ModelState.AddModelError("", "Email format is invalid");
-            }
             else
             {
                 ModelState.AddModelError("", "Photo upload failed");
+                ViewBag.PhotoFailed = "Photo failed to upload";
             }
 
             return View(clubVM);
 
         }
+        //**********************************************************************************************************************************************
+        // Required Feature: Create and call at least 3 functions or methods, at least one of which must return a value that is used in your application
+        //**********************************************************************************************************************************************
         [HttpGet]
-        public async Task<IActionResult> Edit(int id)
+        public async Task<IActionResult>Edit(int id)
         {
             var club = await _clubRepository.GetByIdAsync(id);
             if (club == null) return View("Error");
 
+            //***************************************************************************************************************************************************************
+            // Required Feature: Create at least one class, create at least one object of that class, and populate it with data. Use or display the data in your application
+            //***************************************************************************************************************************************************************
             var clubVM = new EditClubViewModel
             {
                 Title = club.Title,
@@ -107,9 +117,22 @@ namespace ModelTrainWebApp.Controllers
             return View(clubVM);
         }
 
+        //**********************************************************************************************************************************************
+        // Required Feature: Create and call at least 3 functions or methods, at least one of which must return a value that is used in your application
+        //**********************************************************************************************************************************************
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, EditClubViewModel clubVM)
+        public async Task<IActionResult>Edit(int id, EditClubViewModel clubVM)
         {
+            //*********************************************************************************************************************************************
+            // Required Feature: Implement a regular expression (regex) to ensure a field (email address) is always stored and displayed in the same format
+            //*********************************************************************************************************************************************
+            Regex regex = new Regex(@"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
+            if (!regex.IsMatch(clubVM.Email))
+            {
+                ModelState.AddModelError("", "Email format is invalid");
+                ViewBag.InvalidEmailMessage = "Invalid Email Format. Please correct and try again.";
+                return View(clubVM);
+            }
 
             if (!ModelState.IsValid)
             {
@@ -132,7 +155,10 @@ namespace ModelTrainWebApp.Controllers
                 }
 
                 var photoResult = await _photoService.AddPhotoAsync(clubVM.Image);
-                
+
+                //***************************************************************************************************************************************************************
+                // Required Feature: Create at least one class, create at least one object of that class, and populate it with data. Use or display the data in your application
+                //***************************************************************************************************************************************************************
                 var club = new Club
                 
                 {
@@ -154,8 +180,11 @@ namespace ModelTrainWebApp.Controllers
             }
         }
 
+        //**********************************************************************************************************************************************
+        // Required Feature: Create and call at least 3 functions or methods, at least one of which must return a value that is used in your application
+        //**********************************************************************************************************************************************
         [HttpGet]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult>Delete(int id)
         {
             var clubDetails = await _clubRepository.GetByIdAsync(id);
             if (clubDetails == null) return View("Error");

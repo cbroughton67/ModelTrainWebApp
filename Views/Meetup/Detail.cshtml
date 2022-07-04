@@ -4,21 +4,21 @@
 *@
 @{
 }
-Page Content -->
-<div class="container">
 
-    <!-- Portfolio Item Heading -->
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">Model Railroad Events & Gatherings</h1>
+        <p class="lead text-muted">Your Source for Model Railroad Clubs and Events!</p>
+    </div>
+</section>
+
+<div class="container">
     <h1 class="my-4">@Model.Title</h1>
     <h3>@Model.Address.City, @Model.Address.State</h3>
-  
-  
-    <!-- Portfolio Item Row -->
     <div class="row">
-  
       <div class="col-md-8">
-        <img class="img-fluid" src=@Model.Image alt="">
+        <img class="img-fluid" src=@Model.Image alt="@Model.Title">
       </div>
-  
       <div class="col-md-4">
         <h3 class="my-3">@Model.Title</h3>
         <p>@Model.Description</p>
