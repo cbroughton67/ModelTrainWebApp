@@ -8,6 +8,12 @@
       "type": "sqlite.local",
       "connectionId": "ConnectionStrings:ModelTrainWebAppDB",
       "dynamicId": null
+    },
+    "sqlite2": {
+      "secretStore": null,
+      "type": "sqlite.local",
+      "connectionId": "ConnectionStrings:DefaultConnection",
+      "dynamicId": null
     }
   }
 }
