@@ -37,7 +37,7 @@ namespace ModelTrainWebApp.Repository
 
         public async Task<Meetup> GetByIdAsync(int id)
         {
-            return await _context.Meetups.Include(i => i.Address).FirstOrDefaultAsync();
+            return await _context.Meetups.Include(i => i.Address).FirstOrDefaultAsync(i => i.Id == id);
         }
 
         public async Task<Meetup> GetByIdAsyncNoTracking(int id)

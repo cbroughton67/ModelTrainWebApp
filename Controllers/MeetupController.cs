@@ -109,9 +109,7 @@ namespace ModelTrainWebApp.Controllers
                 AddressID = meetup.AddressId,
                 Address = meetup.Address,
                 StartTime = meetup.StartTime,
-                //Contact = meetup.Contact,
-                //Website = meetup.Website,
-                //URL = meetup.Image,
+                //Image = meetup.Image,
                 Email = meetup.Email,
                 MeetupCategory = meetup.MeetupCategory
             };
@@ -172,8 +170,6 @@ namespace ModelTrainWebApp.Controllers
                     MeetupCategory = meetupVM.MeetupCategory,
                     AddressId = meetupVM.AddressID,
                     Address = meetupVM.Address,
-                    //Contact = meetupVM.Contact,
-                    //Website = meetupVM.Website,
                     Image = photoResult.Url.ToString()
                 };
 
@@ -198,7 +194,7 @@ namespace ModelTrainWebApp.Controllers
         }
 
         [HttpPost, ActionName("Delete")]
-        public async Task<IActionResult> DeleteClub(int id)
+        public async Task<IActionResult>DeleteMeetup(int id)
         {
             var MeetupDetails = await _meetupRepository.GetByIdAsync(id);
 

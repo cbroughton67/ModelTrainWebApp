@@ -192,7 +192,7 @@ namespace ModelTrainWebApp.Controllers
         }
 
         [HttpPost, ActionName("Delete")]
-        public async Task<IActionResult> DeleteClub(int id)
+        public async Task<IActionResult>DeleteClub(int id)
         {
             var clubDetails = await _clubRepository.GetByIdAsync(id);
 
