@@ -6,8 +6,10 @@ using ModelTrainWebApp.Interfaces;
 
 namespace ModelTrainWebApp.Services
 {
-    public class PhotoService : IPhotoService  // Implements the IPhotoService interface
-
+    public class PhotoService : IPhotoService  // Implements the IPhotoService interface 
+    //*************************************************************************************************
+    // Required Feature: Connect to an external/3rd party API (Cloudinary) and read data into your app
+    //*************************************************************************************************
     {
         private readonly Cloudinary _cloudinary;
         public PhotoService(IOptions<CloudinarySettings> config)

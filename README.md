@@ -21,6 +21,7 @@ The app allows a user to add, view, edit, and delete information on model train-
 
 - Create an additional class which inherits one or more properties from its parent
 - Implement a regular expression (regex) to ensure a field (email address) is always stored and displayed in the same format
+- Connect to an external/3rd party API (Cloudinary) and read data into your app
 - Read data from an external file, such as text, JSON, CSV, etc (*in this case, a SQL Database*) and use that data in your application
 - Visualize data in a graph, chart, or other visual representation of data (*database data is displayed in rows & columns and on pages*)
 
