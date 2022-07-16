@@ -40,11 +40,6 @@ namespace ModelTrainWebApp.Repository
             return await _context.Clubs.Include(i => i.Address).AsNoTracking().FirstOrDefaultAsync(i => i.Id == id);
         }
 
-        public async Task<IEnumerable<Club>> GetAllClubsByCity(string city)
-        {
-            return await _context.Clubs.Where(c => c.Address.City.Contains(city)).ToListAsync();
-        }
-
         public bool Save()
         {
             var saved = _context.SaveChanges();

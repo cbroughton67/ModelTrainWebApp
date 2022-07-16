@@ -30,11 +30,6 @@ namespace ModelTrainWebApp.Repository
             return await _context.Meetups.ToListAsync();
         }
 
-        public async Task<IEnumerable<Meetup>> GetAllMeetsByCity(string city)
-        {
-            return await _context.Meetups.Where(c => c.Address.City.Contains(city)).ToListAsync();
-        }
-
         public async Task<Meetup> GetByIdAsync(int id)
         {
             return await _context.Meetups.Include(i => i.Address).FirstOrDefaultAsync(i => i.Id == id);
@@ -55,11 +50,6 @@ namespace ModelTrainWebApp.Repository
         {
             _context.Update(meetup);
             return Save();
-        }
-
-        Task<IEnumerable<Meetup>> IMeetupRepository.GetAllMeetupsByCity(string city)
-        {
-            throw new NotImplementedException();
         }
 
     }

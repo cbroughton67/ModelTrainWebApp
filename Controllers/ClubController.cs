@@ -28,7 +28,7 @@ namespace ModelTrainWebApp.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Detail(int id)
+        public async Task<IActionResult>Detail(int id)
         {
             Club club = await _clubRepository.GetByIdAsync(id);
             return View(club);
@@ -110,8 +110,8 @@ namespace ModelTrainWebApp.Controllers
                 Email = club.Email,
                 ClubCategory = club.ClubCategory,
                 AddressID = club.AddressID,
-                Address = club.Address
-                //Image = club.Image
+                Address = club.Address,
+                URL = club.Image
             };
 
             return View(clubVM);
