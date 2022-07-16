@@ -62,7 +62,10 @@
                 <input asp-for="Address.State" class="form-control" placeholder="State" />
                 <span asp-validation-for="Address.State" class="text-danger"></span>
             </div>   
-
+            <!-- Can't pre-load a file-load field due to security concerns. So I opted to require
+                 the user to select a new (or same) file when editing. Otherwise, the only other
+                 option was to disallow editing the image altogether. 
+            -->
             <div class="form-group">
                 <label asp-for="Image">Image</label>
                 <input asp-for="Image" type="file" class="form-control" placeholder="Image" />

@@ -11,7 +11,7 @@ using ModelTrainWebApp.Data;
 namespace ModelTrainWebApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220704210938_InitialCreate")]
+    [Migration("20220716203201_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

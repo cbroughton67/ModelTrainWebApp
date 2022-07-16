@@ -109,7 +109,7 @@ namespace ModelTrainWebApp.Controllers
                 AddressID = meetup.AddressId,
                 Address = meetup.Address,
                 StartTime = meetup.StartTime,
-                //Image = meetup.Image,
+                URL = meetup.Image,
                 Email = meetup.Email,
                 MeetupCategory = meetup.MeetupCategory
             };

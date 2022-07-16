@@ -114,6 +114,7 @@ namespace ModelTrainWebApp.Controllers
                 URL = club.Image
             };
 
+
             return View(clubVM);
         }
 
